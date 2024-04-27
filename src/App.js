@@ -1,28 +1,23 @@
-import { clear } from '@testing-library/user-event/dist/clear';
 import './App.css';
-import Axios from 'axios';
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {Home} from './pages/Home'
+import {Menu} from './pages/Menu'
+import {Contact} from './pages/Contact'
+import {Error} from './pages/Error'
+import {Navbar} from './Navbar'
 
 function App() {
-  const [name, setName] = useState("")
-  const [averageAge, setAverageAge] = useState(null);
-  const fetchData = () => {
-    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
-    setAverageAge(res.data)
-    })
-  };
-
   return (
-    <div className="App">
-      <input 
-        placeholder="Ex. Will..." onChange={(event) => {
-        setName(event.target.value);
-        }}
-      />
-      <button onClick={fetchData}>Average Age</button>
-      <h1>Name: {averageAge?.name}</h1>
-      <h1>Average Age: {averageAge?.age}</h1>
-      <h1>Count: {averageAge?.count}</h1>
+    <div className="App"> 
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/menu' element={<Menu />}/>
+          <Route path='/contact' element={<Contact />}/>
+          <Route path='*' element={<Error />}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

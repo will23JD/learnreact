@@ -5,6 +5,7 @@ import { Profile } from "./pages/Profile";
 import { Contact } from "./pages/Contact";
 import { Navbar } from "./Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Form } from "./components/Form";
 
 function App() {
   const client = new QueryClient({defaultOptions: {
@@ -26,6 +27,7 @@ function App() {
           </Routes>
         </Router>
       </QueryClientProvider>
+      <Form />
     </div>
   );
 }

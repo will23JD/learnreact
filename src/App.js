@@ -1,15 +1,16 @@
 import "./App.css";
-import { useToggle } from "./useToggle";
+import { Person } from "./components/Person";
 
 function App() {
-  const [isVisible, toggle] = useToggle()
-  
   return (
    <div className="App">
-    <button onClick={toggle}>
-      {isVisible ? "Hide" : "Show"}
-    </button>
-    {isVisible && <h1> Hidden text</h1>}
+    <Person
+      name="William"
+      email="Will@will.com"
+      age={22}
+      isMarried={false}
+      friends={["Jim", "Jack", "Jasmin", "John"]}
+    />
    </div>
   );
 }
